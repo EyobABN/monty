@@ -64,10 +64,13 @@ void pintHandler(stack_t **stack, unsigned int line_number)
  */
 void popHandler(stack_t **stack, unsigned int line_number)
 {
-	stack = stack;
-	line_number = line_number;
-
-	printf("%s %s\n", argv[0], argv[1]);
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+		free_entire_arr(argv);
+		exit(EXIT_FAILURE);
+	}
+	delete_node_at_index(stack, 0);
 }
 
 /**
