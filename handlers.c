@@ -45,10 +45,13 @@ void pallHandler(stack_t **stack, unsigned int line_number)
  */
 void pintHandler(stack_t **stack, unsigned int line_number)
 {
-	stack = stack;
-	line_number = line_number;
-
-	printf("%s %s\n", argv[0], argv[1]);
+	if (*stack == NULL)
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		free_entire_arr(argv);
+		exit(EXIT_FAILURE);
+	}
+	printf("%d\n", (*stack)->n);
 }
 
 
