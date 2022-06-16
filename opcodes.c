@@ -43,4 +43,12 @@ void exec_instruction(char *s, stack_t **stack, unsigned int line_number)
 
 	if (f)
 		f(stack, line_number);
+	else
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, s);
+		free_entire_arr(argv);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
 }
+

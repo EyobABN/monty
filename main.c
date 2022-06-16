@@ -25,15 +25,15 @@ int main(int ac, char **av)
 	fptr = fopen(av[1], "r");
 	if (fptr == NULL)
 	{
-		write(2, "Error: Can't open file ", 23);
-		write(2, av[1], strlen(av[1]));
-		write(2, "\n", 1);
+		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 	while ((nread = getline(&line, &len, fptr)) != -1)
 	{
 		line[strlen(line) - 1] = '\0';	/* remove newline char from the end */
 		argv = mkargv(line);
+		free(line);
+		line = NULL;
 		if (argv[0] != NULL)
 			exec_instruction(argv[0], &stack, line_number);
 		free_entire_arr(argv);
