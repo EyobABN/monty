@@ -37,6 +37,4 @@ void nopHandler(stack_t **stack, unsigned int line_number)
 {
 	stack = stack;
 	line_number = line_number;
-
-	printf("%s %s\n", argv[0], argv[1]);
 }
