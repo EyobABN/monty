@@ -82,8 +82,22 @@ void popHandler(stack_t **stack, unsigned int line_number)
  */
 void swapHandler(stack_t **stack, unsigned int line_number)
 {
-	stack = stack;
-	line_number = line_number;
+	unsigned int length = 0;
+	stack_t *p = *stack;
+	int top, next;
 
-	printf("%s %s\n", argv[0], argv[1]);
+	for (; p != NULL; p = p->next)
+		length++;
+	if (length < 2)
+	{
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+		free_entire_arr(argv);
+		if (*stack != NULL)
+			free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	top = (*stack)->n;
+	next = (*stack)->next->n;
+	(*stack)->n = next;
+	(*stack)->next->n = top;
 }
