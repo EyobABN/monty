@@ -20,6 +20,7 @@ void (*get_opcodeHandler(char *s))(stack_t **stack, unsigned int line_number)
 		{"div", divHandler},
 		{"mul", mulHandler},
 		{"mod", modHandler},
+		{"pchar", pcharHandler},
 		{NULL, NULL}
 	};
 	int i = 0;

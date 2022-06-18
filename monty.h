@@ -60,6 +60,7 @@ void subHandler(stack_t **stack, unsigned int line_number);
 void divHandler(stack_t **stack, unsigned int line_number);
 void mulHandler(stack_t **stack, unsigned int line_number);
 void modHandler(stack_t **stack, unsigned int line_number);
+void pcharHandler(stack_t **stack, unsigned int line_number);
 
 int is_number(char *s);
 char *itoa(int n);

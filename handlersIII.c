@@ -111,3 +111,32 @@ void modHandler(stack_t **stack, unsigned int line_number)
 	(*stack)->next->n %= (*stack)->n;
 	delete_node_at_index(stack, 0);
 }
+
+
+/**
+ * pcharHandler - handles the pchar opcode
+ * @stack: the stack
+ * @line_number: the line number
+ *
+ * Return: void
+ */
+void pcharHandler(stack_t **stack, unsigned int line_number)
+{
+	unsigned int length = 0;
+	stack_t *p = *stack;
+
+	for (; p != NULL; p = p->next)
+		length++;
+	if (length == 0 || (*stack)->n > 177)
+	{
+		if (length == 0)
+			fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+		else
+			fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+		free_entire_arr(argv);
+		if (*stack != NULL)
+			free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	printf("%c\n", (*stack)->n);
+}
