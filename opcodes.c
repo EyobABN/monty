@@ -21,6 +21,11 @@ void (*get_opcodeHandler(char *s))(stack_t **stack, unsigned int line_number)
 		{"mul", mulHandler},
 		{"mod", modHandler},
 		{"pchar", pcharHandler},
+		{"pstr", pstrHandler},
+		{"rotl", rotlHandler},
+		{"rotr", rotrHandler},
+		{"stack", stackHandler},
+		{"queue", queueHandler},
 		{NULL, NULL}
 	};
 	int i = 0;

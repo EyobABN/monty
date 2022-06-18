@@ -61,6 +61,11 @@ void divHandler(stack_t **stack, unsigned int line_number);
 void mulHandler(stack_t **stack, unsigned int line_number);
 void modHandler(stack_t **stack, unsigned int line_number);
 void pcharHandler(stack_t **stack, unsigned int line_number);
+void pstrHandler(stack_t **stack, unsigned int line_number);
+void rotlHandler(stack_t **stack, unsigned int line_number);
+void rotrHandler(stack_t **stack, unsigned int line_number);
+void stackHandler(stack_t **stack, unsigned int line_number);
+void queueHandler(stack_t **stack, unsigned int line_number);
 
 int is_number(char *s);
 char *itoa(int n);
