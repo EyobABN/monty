@@ -34,7 +34,7 @@ int main(int ac, char **av)
 		argv = mkargv(line);
 		free(line);
 		line = NULL;
-		if (argv[0] != NULL)
+		if (argv[0] != NULL && strcmp(argv[0], "#") != 0)
 			exec_instruction(argv[0], &stack, line_number);
 		free_entire_arr(argv);
 		argv = NULL;

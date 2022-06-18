@@ -26,12 +26,28 @@ int count_words(char *str)
 }
 
 /**
+ * mkcomment - makes a comment argv
+ * @cmd: the argv
+ * @word_count: the length of the argv
+ *
+ * Return: the argv, updated
+ */
+char **mkcomment(char **cmd, int word_count)
+{
+	int i;
+
+	cmd[0] = strdup("#");
+	for (i = 1; i < word_count; i++)
+		cmd[i] = NULL;
+	return (cmd);
+}
+
+/**
  * mkargv - splits a string into words
  * @str: the string
  *
  * Return: an array of the words
  */
-
 char **mkargv(char *str)
 {
 	char **cmd;
@@ -52,6 +68,8 @@ char **mkargv(char *str)
 				i++;
 			continue;
 		}
+		if (str[i] == '#')
+			return (mkcomment(cmd, word_count));
 		j = i;
 		letter_count = 0;
 		while (str[i] != ' ' && str[i] != '\t' && str[i])
