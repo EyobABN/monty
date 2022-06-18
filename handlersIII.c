@@ -127,7 +127,8 @@ void pcharHandler(stack_t **stack, unsigned int line_number)
 
 	for (; p != NULL; p = p->next)
 		length++;
-	if (length == 0 || (*stack)->n > 177)
+	if (length == 0 || (*stack)->n > 177 || (*stack)->n < 0 ||
+			(*stack)->n == 128 || (*stack)->n == 129)
 	{
 		if (length == 0)
 			fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
